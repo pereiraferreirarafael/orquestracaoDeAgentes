@@ -22,6 +22,11 @@
         "hooks": [
           {
             "type": "agent",
+            "command": "documentacao",
+            "timeout": 180
+          },
+          {
+            "type": "agent",
             "command": "agente-teste-qa",
             "timeout": 300
           }

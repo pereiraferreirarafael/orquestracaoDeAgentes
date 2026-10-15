@@ -10,7 +10,9 @@ Pipeline automático que valida o código a cada edição e antes de avançar, u
 |--------|-----------|------------------|-----------|
 | Revisor de Código | `PostToolUse` (Write/Edit) | Qualidade, padrões, legibilidade | Não |
 | Segurança | `PostToolUse` (Write/Edit, em paralelo) | SQL injection, secrets, XSS, config insegura | Sim (Crítico/Alto) |
+| Documentação | `Stop` (fim da resposta) | JavaDoc/TSDoc, README, CHANGELOG | Não |
 | Teste/QA | `Stop` (fim da resposta) | Testes, cobertura, build | Sim (qualquer falha) |
+| Deploy | Manual (não é hook) | Publicação com health check e rollback | Exige confirmação humana |
 
 ## Fluxo
 
@@ -18,8 +20,11 @@ Pipeline automático que valida o código a cada edição e antes de avançar, u
 Edição de código
    → Revisor de Código + Segurança (paralelo)
    → fim da resposta
-   → Teste/QA
+   → Documentação + Teste/QA
+   → (manual) Deploy, só após confirmação humana
 ```
+
+O Deploy não é disparado por hook de propósito: publicar em produção exige pedido e confirmação explícitos. Os hooks de um mesmo evento podem rodar em paralelo, então a ordem entre Documentação e QA não é garantida.
 
 ## Como funciona
 
@@ -29,7 +34,7 @@ Edição de código
 
 ## Próximos agentes (especificações em `docs/agentes-planejados/`)
 
-Documentação, Performance, Deploy, Dependências, Monitoramento pós-deploy, Refatoração e Onboarding. Todos já têm especificação, mas ainda não foram convertidos em subagents.
+Performance, Dependências, Monitoramento pós-deploy, Refatoração e Onboarding. Todos já têm especificação, mas ainda não foram convertidos em subagents.
 
 ## Stack coberto
 
