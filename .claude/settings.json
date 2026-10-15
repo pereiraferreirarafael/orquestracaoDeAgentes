@@ -1,0 +1,32 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "agent",
+            "command": "revisor-de-codigo",
+            "timeout": 120
+          },
+          {
+            "type": "agent",
+            "command": "seguranca",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "agent",
+            "command": "agente-teste-qa",
+            "timeout": 300
+          }
+        ]
+      }
+    ]
+  }
+}
