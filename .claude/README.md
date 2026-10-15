@@ -29,7 +29,7 @@ Edição de código
 
 ## Próximos agentes (especificações em `docs/agentes-planejados/`)
 
-Em ordem de prioridade: Performance, Dependências, Monitoramento pós-deploy, Refatoração e Onboarding. Documentação e Deploy ainda precisam ser especificados.
+Documentação, Performance, Deploy, Dependências, Monitoramento pós-deploy, Refatoração e Onboarding. Todos já têm especificação, mas ainda não foram convertidos em subagents.
 
 ## Stack coberto
 
